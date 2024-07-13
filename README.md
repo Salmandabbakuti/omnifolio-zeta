@@ -25,7 +25,6 @@ npx hardhat deploy --network zeta_testnet
 - [ERC721 Soulbound Reference](https://ethereum.stackexchange.com/a/161807)
 - [ERC721 Onchain Metadata](https://andyhartnett.medium.com/solidity-tutorial-how-to-store-nft-metadata-and-svgs-on-the-blockchain-6df44314406b)
 - [Constructing Onchain Metadata directly in tokenURI without storing offchain](https://stackoverflow.com/a/70924789)
-- [Subgraph Docs](https://thegraph.com/docs/)
 
 ## Built With
 
