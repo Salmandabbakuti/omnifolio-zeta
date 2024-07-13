@@ -1,67 +1,40 @@
-# Hardhat Boilerplate(Minimal)
+# OmniFolio
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts with balances.
+OmniFolio is your decentralized, crosschain, portable, and ownable link hub, enabling seamless sharing of creations across Instagram, TikTok, Twitter, YouTube, and more, all with one simple link. OmniFolio transforms personal profiles into NFTs, where you can craft a unique bio, avatar, and links to social media as properties and attributes of your NFT. Own your soulbound digital identity effortlessly, fully accessible and interactable from any blockchain.
 
 ## Getting Started
 
-> Recommended to use Node.js v18+ and npm v8+
-
-Try running some of the following tasks:
-
 ```bash
+
 npm install
 
-# Set/Read/Remove hardhat config variables
-# npx hardhat vars set API_KEY
-# npx hardhat vars get API_KEY
-# npx hardhat vars DELETE API_KEY
-# npx hardhat vars list
-
-# set PRIVATE_KEY
-npx hardhat vars set PRIVATE_KEY
-
-
-# starts local node
-npx hardhat node
-
-# compile contracts
 npx hardhat compile
 
-# deploy contract in scripts/deploy.ts on specified network
-npx hardhat run scripts/deploy.ts --network localhost
+npx hardhat account --save
 
-# verify contract
-npx hardhat verify --network <deployed network> <deployed contract address> "<constructor1>" "<constructor2>"
-
-# check coverage using solidity-coverage plugin: supports hardhat network only
-npx hardhat coverage --network hardhat
-
-# unit tests including gas usage
-npx hardhat test
-
-# remove all compiled and deployed artifacts
-npx hardhat clean
-
-# show help
-npx hardhat help
+npx hardhat deploy --network zeta_testnet
 ```
 
-## Change Log
+### References
 
-#### v1.2.3
+- [Zetachain Docs](https://www.zetachain.com/docs)
+- [Building Universal App](https://www.zetachain.com/docs/developers/tutorials/hello/)
+- [Zetachain NFT Tutorial](https://www.zetachain.com/docs/developers/tutorials/nft/)
+- [Openzeppelin ERC721 DOCS](https://docs.openzeppelin.com/contracts/5.x/erc721)
+- [ERC721 Metadata Standards](https://docs.opensea.io/docs/metadata-standards)
+- [ERC721 Soulbound Reference](https://ethereum.stackexchange.com/a/161807)
+- [ERC721 Onchain Metadata](https://andyhartnett.medium.com/solidity-tutorial-how-to-store-nft-metadata-and-svgs-on-the-blockchain-6df44314406b)
+- [Constructing Onchain Metadata directly in tokenURI without storing offchain](https://stackoverflow.com/a/70924789)
+- [Subgraph Docs](https://thegraph.com/docs/)
 
-- Replaced deprecated mumbai network with amoy network in `hardhat.config.ts`
-- Compiler version updated to `0.8.24`
-- Hardhat deps update
-- Generalized `deploy.ts` script for any contract with minimal changes
-- README.md sections update
+## Built With
 
-## References
-
-- [Hardhat](https://hardhat.org/)
-- [Hardhat Docs](https://hardhat.org/getting-started/)
-- [Ethers.js](https://docs.ethers.io/v5/)
-- [Solidity](https://docs.soliditylang.org/en/v0.8.25/)
+- [Zetachain](https://www.zetachain.com/) - A foundational, public blockchain that enables omnichain, generic smart contracts and messaging between any blockchain.
+- [Hardhat](https://hardhat.org/) - Ethereum development environment for professionals
+- [Third Web](https://thirdweb.com) - Full-stack, open-source web3 development platform. Frontend, backend, and onchain tools to build complete web3 apps — on every EVM chain.
+- [Ethers.js](https://docs.ethers.io/v5/) - A complete and compact library for interacting with the Ethereum Blockchain and its ecosystem.
+- [Next.js](https://nextjs.org/) - The React Framework for Production.
+- [Antd](https://ant.design/) - A design system for enterprise-level products. Create an efficient and enjoyable work experience.
 
 ## Safety
 
