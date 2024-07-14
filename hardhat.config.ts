@@ -2,6 +2,7 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@zetachain/toolkit/tasks";
 import { getHardhatConfigNetworks } from "@zetachain/networks";
+import "./tasks/deploy";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.7",
