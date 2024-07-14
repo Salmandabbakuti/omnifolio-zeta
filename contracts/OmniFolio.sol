@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.24;
+pragma solidity 0.8.7;
 
 import "@zetachain/protocol-contracts/contracts/zevm/SystemContract.sol";
 import "@zetachain/protocol-contracts/contracts/zevm/interfaces/zContract.sol";
@@ -10,6 +10,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
 contract OmniFolio is zContract, ERC721, OnlySystem {
+    using Strings for uint256;
     SystemContract public systemContract;
     error CallerNotOwnerNotApproved();
     uint256 constant BITCOIN = 18332;
@@ -28,10 +29,10 @@ contract OmniFolio is zContract, ERC721, OnlySystem {
 
     mapping(uint256 => uint256) public tokenAmounts;
     mapping(uint256 => uint256) public tokenChains;
-    mapping(uint256 tokenId => Profile profile) public profiles;
-    mapping(string handle => uint256 tokenId) public handleToTokenId;
-    mapping(string handle => bool isExists) public profileExists;
-    mapping(address user => uint256 tokenId) public tokenIdOfUser;
+    mapping(uint256 => Profile) public profiles;
+    mapping(string => uint256) public handleToTokenId;
+    mapping(string => bool) public profileExists;
+    mapping(address => uint256) public tokenIdOfUser;
 
     event ProfileCreated(
         uint256 indexed tokenId,
@@ -127,7 +128,7 @@ contract OmniFolio is zContract, ERC721, OnlySystem {
         uint256 userTokenId = tokenIdOfUser[msg.sender];
         // if owner doesnt match, it means token doesnt exist
         require(
-            _ownerOf(tokenId) == msg.sender,
+            _ownerOf(userTokenId) == msg.sender,
             "OmniFolio: Profile NFT does not exist"
         );
 
@@ -225,17 +226,17 @@ contract OmniFolio is zContract, ERC721, OnlySystem {
     }
 
     // override to prevent transfers
-    function _update(
+    function _beforeTokenTransfer(
+        address from,
         address to,
         uint256 tokenId,
-        address auth
-    ) internal override returns (address) {
-        address from = _ownerOf(tokenId);
+        uint256 batchSize
+    ) internal virtual override {
         require(
             from == address(0) || to == address(0),
             "OmniFolio: Profile is non-transferable"
         );
-        return super._update(to, tokenId, auth);
+        super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
     function getProfileByHandle(
